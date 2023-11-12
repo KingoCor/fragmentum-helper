@@ -1,18 +1,19 @@
 use leptos::*;
+use crate::GITHUB_ROOT;
 
 #[component]
 pub fn Nav() -> impl IntoView {
     view! {
         <nav>
-            <a href="/">
+            <a href=format!("/{}/", GITHUB_ROOT)>
                 <h1>"Fragmentum"</h1>
                 <h2>"помощник"</h2>
             </a>
             <ul>
-                <li><a href="/create_race"><button>{ "Создaть расу" }</button></a></li>
-                <li><a href="/resource_calculator"><button>{ "Калькулятор ресурсов" }</button></a></li>
-                <li><a href="/detachment_editor"><button>{ "Конструктор отрядов" }</button></a></li>
-                <li><a href="/race_about_template"><button>{ "Шаблон \"Ваша страна как\"" }</button></a></li>
+                <li><a href=format!("/{}/create_race", GITHUB_ROOT)><button>{ "Создaть расу" }</button></a></li>
+                <li><a href=format!("/{}/resource_calculator", GITHUB_ROOT)><button>{ "Калькулятор ресурсов" }</button></a></li>
+                <li><a href=format!("/{}/detachment_editor", GITHUB_ROOT)><button>{ "Конструктор отрядов" }</button></a></li>
+                <li><a href=format!("/{}/race_about_template", GITHUB_ROOT)><button>{ "Шаблон \"Ваша страна как\"" }</button></a></li>
             </ul>
         </nav>
     }

@@ -1,7 +1,7 @@
 use std::f64::consts::PI;
-
 use leptos::{*, wasm_bindgen::prelude::*};
 use web_sys::{CanvasRenderingContext2d, HtmlCanvasElement, HtmlImageElement, HtmlInputElement, Url, js_sys::Function};
+use crate::GITHUB_ROOT;
 
 fn draw_image_from_input(id: &str, x: f64, y: f64, w: f64, h: f64) {
     let name_img: HtmlInputElement = document()
@@ -150,6 +150,6 @@ pub fn RaceAboutTemplate() -> impl IntoView {
             </table>
             <canvas id="view" width=1109 height=1844> </canvas>
         </div>
-        <img src="/media/race_about_template.png" id="template"/>
+        <img src=format!("/{}/media/race_about_template.png", GITHUB_ROOT) id="template"/>
     }
 }
