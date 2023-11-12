@@ -37,6 +37,7 @@ pub fn RaceAboutTemplate() -> impl IntoView {
     let (animal, set_animal) = create_signal("".to_string());
     let (px, set_px) = create_signal(9);
     let (py, set_py) = create_signal(9);
+    let (view_url, set_view_url) = create_signal("".to_string());
 
     let create = move |_| {
         let document = web_sys::window().unwrap().document().unwrap();
@@ -100,6 +101,8 @@ pub fn RaceAboutTemplate() -> impl IntoView {
         ctx.move_to(x, y);
         let _ = ctx.arc(x-0.5, y-0.5, size-13.0, 0.0, PI*2.0);
         ctx.fill();
+
+        set_view_url.set(canvas.to_data_url().unwrap());
     };
 
 
@@ -145,7 +148,10 @@ pub fn RaceAboutTemplate() -> impl IntoView {
                     </td>
                 </tr>
                 <tr>
-                    <td colspan=2><button on:click=create>"Создать"</button></td>
+                    <td colspan=2>
+                        <button on:click=create>"Создать"</button>
+                        <a href={move || view_url.get()} download="шаблон.png"><button on:click=create>"Скачать"</button></a>
+                    </td>
                 </tr>
             </table>
             <canvas id="view" width=1109 height=1844> </canvas>
