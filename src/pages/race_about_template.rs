@@ -141,8 +141,10 @@ pub fn RaceAboutTemplate() -> impl IntoView {
                 <tr>
                     <td>"Политические координаты"</td>
                     <td>
+                        <label for="coords-vertical">"X"</label>
                         <input id="coords-vertical" type="range" min="0" max="18"
                         on:input=move |ev| { set_px.set(event_target_value(&ev).parse::<u8>().unwrap()) } prop:value=px/>
+                        <label for="coords-horizontal">"Y"</label>
                         <input id="coords-horizontal" type="range" min="0" max="18"
                         on:input=move |ev| { set_py.set(event_target_value(&ev).parse::<u8>().unwrap()) } prop:value=py/>
                     </td>

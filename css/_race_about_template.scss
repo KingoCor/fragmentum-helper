@@ -8,6 +8,11 @@ table.race-about-template-inputs {
 	tr {
 		height: 10px;
 	}
+
+	td {
+		display: flex;
+		align-items: center;
+	}
 }
 
 #template {
