@@ -94,11 +94,11 @@ pub fn RaceAboutTemplate() -> impl IntoView {
         let y: f64 = 1201.0+size*py.get() as f64;
 
         ctx.begin_path();
-        ctx.arc(x, y, size-10.0, 0.0, PI*2.0);
+        let _ = ctx.arc(x, y, size-10.0, 0.0, PI*2.0);
         ctx.stroke();
         ctx.begin_path();
         ctx.move_to(x, y);
-        ctx.arc(x-0.5, y-0.5, size-13.0, 0.0, PI*2.0);
+        let _ = ctx.arc(x-0.5, y-0.5, size-13.0, 0.0, PI*2.0);
         ctx.fill();
     };
 
