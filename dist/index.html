@@ -2,38 +2,11 @@
     <meta charset="utf-8">
     <title>Fragmentum helper</title>
 	
-    <link rel="stylesheet" href="/index-ec7724261cf93c8c.css">
+    <link rel="stylesheet" href="/index-647faf9f8644d848.css">
   
-<link rel="preload" href="/fragmentum-helper-abe9cccaadefc667_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-<link rel="modulepreload" href="/fragmentum-helper-abe9cccaadefc667.js"></head>
+<link rel="preload" href="/fragmentum-helper-389f32fbd95fb617_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/fragmentum-helper-389f32fbd95fb617.js"></head>
   <body>
   
 
-<script type="module">import init from '/fragmentum-helper-abe9cccaadefc667.js';init('/fragmentum-helper-abe9cccaadefc667_bg.wasm');</script><script>(function () {
-    var protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    var url = protocol + '//' + window.location.host + '/_trunk/ws';
-    var poll_interval = 5000;
-    var reload_upon_connect = () => {
-        window.setTimeout(
-            () => {
-                // when we successfully reconnect, we'll force a
-                // reload (since we presumably lost connection to
-                // trunk due to it being killed, so it will have
-                // rebuilt on restart)
-                var ws = new WebSocket(url);
-                ws.onopen = () => window.location.reload();
-                ws.onclose = reload_upon_connect;
-            },
-            poll_interval);
-    };
-
-    var ws = new WebSocket(url);
-    ws.onmessage = (ev) => {
-        const msg = JSON.parse(ev.data);
-        if (msg.reload) {
-            window.location.reload();
-        }
-    };
-    ws.onclose = reload_upon_connect;
-})()
-</script></body></html>
+<script type="module">import init from '/fragmentum-helper-389f32fbd95fb617.js';init('/fragmentum-helper-389f32fbd95fb617_bg.wasm');</script></body></html>
