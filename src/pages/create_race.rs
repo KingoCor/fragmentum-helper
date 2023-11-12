@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-
+use std::cmp::Ordering;
 use leptos::*;
 use strum::IntoEnumIterator;
 use crate::components::aspect_selector::AspectSelector;
@@ -10,7 +10,7 @@ pub fn CreateRace() -> impl IntoView {
     let (aspects, set_aspects) = create_signal(HashMap::<AspectClass,Aspect>::new());
 
     let get_cost = move || -> i32 {
-        aspects.get().into_iter().map(|(_,v)| -1*v.cost).sum::<i32>() + 2
+        aspects.get().into_values().map(|v| -v.cost).sum::<i32>() + 2
     };
 
     view! {
@@ -39,34 +39,26 @@ pub fn CreateRace() -> impl IntoView {
             </div>
             <div class="selected-aspects">
                 <h3 class= move || {
-                    let count = aspects.get().len();
-                    if count==6 {
-                        "text-correct"
-                    } else if count>6 {
-                        "text-wrong"
-                    } else {
-                        ""
+                    match aspects.get().len().cmp(&6) {
+                        Ordering::Equal => "text-correct",
+                        Ordering::Greater => "text-wrong",
+                        Ordering::Less => ""
                     }
                 }>
                     {move || format!("Выбрано ({}/6)",aspects.get().len())}
                 </h3>
                 <p class= move || {
-                    let count = get_cost();
-                    if count==0 {
-                        "text-correct"
-                    } else if count<0 {
-                        "text-wrong"
-                    } else {
-                        ""
+                    match get_cost().cmp(&0) {
+                        Ordering::Equal => "text-correct",
+                        Ordering::Less => "text-wrong",
+                        Ordering::Greater => ""
                     }
                 }>
                     "Осталось очков: " { get_cost }
                 </p>
                 <ul>
                     {
-                        move || aspects.get()
-                            .into_iter()
-                            .map(|(_,val)| {view! {
+                        move || aspects.get().into_values().map(|val| {view! {
                                 <li>
                                     {format!("{} ({})",val.name,val.cost)}
                                 </li>
