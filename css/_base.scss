@@ -1,0 +1,104 @@
+@use "fonts";
+
+$background-color: #11100E;
+$foreground-color: #1E1712;
+$primary-color: #FFA76E;
+$text-color: #D5804A;
+
+.center-content {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $background-color;
+
+  color: $text-color;
+  font-family: "Cera";
+  font-size: 15pt;
+}
+
+a {
+  text-decoration: none;
+  color: $text-color;
+  transition: all 0.5s;
+}
+
+a:hover {
+  text-shadow: 0 0 5px $text-color;
+  transition: all 0.5s;
+}
+
+button {
+	background: rgba(0,0,0,0);
+
+	border: solid;
+	border-width: 3px;
+	border-color: $primary-color;
+	border-radius: 10px;
+
+	margin: 5px;
+	padding: 10px;
+	color: $primary-color;
+	font-weight: bold;
+	transition: all 0.2s;
+}
+
+button:hover {
+	text-shadow: 0 0 5px $primary-color;
+	box-shadow: 0 0 5px $primary-color;
+	transition: all 0.2s;
+}
+
+fieldset {
+	border: solid;
+	border-width: 3px;
+	border-color: $primary-color;
+	border-radius: 10px;
+
+	legend	{
+		font-family: "Forum";
+		font-size: 20pt;
+	}
+}
+
+input[type=radio] {
+	appearance: none;
+
+	width: 16px;
+	height: 16px;
+
+	border: 2px solid $primary-color;
+	border-radius: 50%;
+
+	transition: 0.2s all linear;
+}
+
+input[type=radio]:checked {
+	background-color: $primary-color;
+}
+
+input {
+	background: rgba(0,0,0,0);
+	padding: 5px;
+
+	border: 2px solid $primary-color;
+	border-radius: 10px;
+
+	margin: 10px;
+
+	color: $text-color;
+}
+
+main {
+	h1 {
+		text-align: center;
+	}
+}

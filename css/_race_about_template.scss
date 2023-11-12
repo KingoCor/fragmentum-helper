@@ -1,0 +1,15 @@
+@use "base";
+
+div.race-about-template-container {
+	justify-items: center;
+}
+
+table.race-about-template-inputs {
+	tr {
+		height: 10px;
+	}
+}
+
+#template {
+	display: none;
+}

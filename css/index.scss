@@ -1,0 +1,61 @@
+@use "fonts";
+@use "base";
+@use "aspect_selector";
+@use "race_about_template";
+
+$nav-width: 15vw;
+$main-side-padding: 1vw;
+
+main {
+	position: absolute;
+	left: $nav-width;
+
+	width: 100vw - $nav-width - 2*$main-side-padding;
+	height: 100vh;
+
+	padding-left: $main-side-padding;
+	padding-right: $main-side-padding;
+}
+
+nav {
+	display: block;
+	position: fixed;
+	z-index: 1000;
+
+	width: $nav-width;
+	height: 100vh;
+
+	margin: 0;
+	background: base.$foreground-color;
+
+	h1, h2 {
+		text-align: center;
+	}
+	h1 {
+		font-family: "King";
+		font-size: $nav-width * 0.2;
+		margin-top: 1vw;
+		margin-bottom: 0;
+	}
+	h2 {
+		margin-top: 0;
+		font-size: $nav-width * 0.1;
+	}
+
+	ul {
+		width: 100%;
+		list-style: none;
+		margin: 0px;
+		padding: 0;
+	}
+	li {
+		padding: 5px 0;
+		margin-top: 10px;
+
+		button {
+			width: 80%;
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+	}
+}

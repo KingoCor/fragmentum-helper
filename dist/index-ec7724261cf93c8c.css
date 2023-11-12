@@ -1,0 +1,206 @@
+@font-face {
+  font-family: "Cera";
+  src: url("media/CeraPro-Italic.ttf");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Cera";
+  src: url("media/CeraPro-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cera";
+  src: url("media/CeraPro-Medium.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cera";
+  src: url("media/CeraPro-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "King";
+  src: url("media/Kingslayer.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #11100E;
+  color: #D5804A;
+  font-family: "Cera";
+  font-size: 15pt;
+}
+
+a {
+  text-decoration: none;
+  color: #D5804A;
+  transition: all 0.5s;
+}
+
+a:hover {
+  text-shadow: 0 0 5px #D5804A;
+  transition: all 0.5s;
+}
+
+button {
+  background: rgba(0, 0, 0, 0);
+  border: solid;
+  border-width: 3px;
+  border-color: #FFA76E;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  color: #FFA76E;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+button:hover {
+  text-shadow: 0 0 5px #FFA76E;
+  box-shadow: 0 0 5px #FFA76E;
+  transition: all 0.2s;
+}
+
+fieldset {
+  border: solid;
+  border-width: 3px;
+  border-color: #FFA76E;
+  border-radius: 10px;
+}
+fieldset legend {
+  font-family: "Forum";
+  font-size: 20pt;
+}
+
+input[type=radio] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #FFA76E;
+  border-radius: 50%;
+  transition: 0.2s all linear;
+}
+
+input[type=radio]:checked {
+  background-color: #FFA76E;
+}
+
+input {
+  background: rgba(0, 0, 0, 0);
+  padding: 5px;
+  border: 2px solid #FFA76E;
+  border-radius: 10px;
+  margin: 10px;
+  color: #D5804A;
+}
+
+main h1 {
+  text-align: center;
+}
+
+fieldset.aspect-selector {
+  display: flex;
+  margin: 10px;
+}
+fieldset.aspect-selector legend {
+  margin-bottom: 0;
+}
+
+div.aspect-selector-description {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+ul.aspect-selector-choose {
+  width: 20%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 1%;
+  border-left: 3px solid #FFA76E;
+}
+ul.aspect-selector-choose li {
+  display: flex;
+  align-items: center;
+}
+ul.aspect-selector-choose li input[type=number] {
+  margin-left: 1%;
+  width: 70%;
+}
+
+div.race-about-template-container {
+  justify-items: center;
+}
+
+table.race-about-template-inputs tr {
+  height: 10px;
+}
+
+#template {
+  display: none;
+}
+
+main {
+  position: absolute;
+  left: 15vw;
+  width: 83vw;
+  height: 100vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+nav {
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  width: 15vw;
+  height: 100vh;
+  margin: 0;
+  background: #1E1712;
+}
+nav h1, nav h2 {
+  text-align: center;
+}
+nav h1 {
+  font-family: "King";
+  font-size: 3vw;
+  margin-top: 1vw;
+  margin-bottom: 0;
+}
+nav h2 {
+  margin-top: 0;
+  font-size: 1.5vw;
+}
+nav ul {
+  width: 100%;
+  list-style: none;
+  margin: 0px;
+  padding: 0;
+}
+nav li {
+  padding: 5px 0;
+  margin-top: 10px;
+}
+nav li button {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
