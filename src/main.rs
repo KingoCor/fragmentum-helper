@@ -1,11 +1,13 @@
 mod components;
 mod pages;
+mod aspects;
 
 use leptos::*;
 use leptos_router::*;
 
 use components::nav::Nav;
 
+use pages::create_race::CreateRace;
 use pages::under_construction::UnderConstruction;
 use pages::race_about_template::RaceAboutTemplate;
 
@@ -18,7 +20,7 @@ fn main() {
             <main>
                 <Routes>
                     <Route path=format!("/{}/", GITHUB_ROOT) view=UnderConstruction/>
-                    <Route path=format!("/{}/create_race", GITHUB_ROOT) view=UnderConstruction/>
+                    <Route path=format!("/{}/create_race", GITHUB_ROOT) view=CreateRace/>
                     <Route path=format!("/{}/resource_calculator", GITHUB_ROOT) view=UnderConstruction/>
                     <Route path=format!("/{}/detachment_editor", GITHUB_ROOT) view=UnderConstruction/>
                     <Route path=format!("/{}/race_about_template", GITHUB_ROOT) view=RaceAboutTemplate/>

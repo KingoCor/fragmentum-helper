@@ -1,0 +1,29 @@
+@use "base";
+
+.text-wrong {
+	color: base.$wrong;
+  	text-shadow: 0 0 5px base.$wrong;
+}
+
+.text-correct {
+	color: base.$correct;
+  	text-shadow: 0 0 5px base.$correct;
+}
+
+div.aspect-selection {
+	display: flex;
+	align-items: flex-start;
+}
+
+div.aspect-list {
+	width: 50%;
+}
+
+div.selected-aspects {
+	background: base.$foreground-color;
+	border-radius: 10px;
+	width: 50%;
+	position: sticky;
+	top: 5px;
+	padding: 10px;
+}
