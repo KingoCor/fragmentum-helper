@@ -1,6 +1,7 @@
 use strum_macros::EnumIter;
+use serde::{Deserialize, Serialize};
 
-#[derive(EnumIter, PartialEq, Clone, Copy, Debug, Hash, Eq)]
+#[derive(EnumIter, PartialEq, Clone, Copy, Debug, Hash, Eq, Serialize, Deserialize)]
 pub enum AspectClass {
     Strong,
     Hardy, 
@@ -21,7 +22,9 @@ pub enum AspectClass {
     ReligiousFanatics,
     Stockpiles,
     CultOfPower,
-    Talented,
+    TalentedWarriors,
+    TalentedPoliticians,
+    TalentedManagers,
     FormidableHorsemen,
     RichMilitaryTraditions,
     Hardworking,
@@ -42,7 +45,7 @@ pub enum AspectClass {
     StrangeWorld,
 }
 
-#[derive(PartialEq, Clone)]
+#[derive(PartialEq, Clone, Serialize, Deserialize)]
 pub struct Aspect {
     pub class: AspectClass,
     pub name: String,
@@ -227,10 +230,28 @@ impl Aspect {
                 is_negative: false,
                 can_be_negative: true,
             },
-            AspectClass::Talented => Aspect{
+            AspectClass::TalentedWarriors => Aspect{
                 class: aspect,
-                name: "Талантливые воины/политики/управленцы".to_string(),
-                description: "Народы с этой чертой имеют увеличенный на 2 стартовый прирост военных, политических или экономических фрагментов, что способствует их ускоренному прогрессу в соответствующих сферах. Вы также получаете небольшие бонусы к способностям выбранного типа специалистов".to_string(),
+                name: "Талантливые воины".to_string(),
+                description: "Народы с этой чертой имеют увеличенный на 2 стартовый прирост военных фрагментов, что способствует их ускоренному прогрессу в соответствующих сферах. Вы также получаете небольшие бонусы к способностям выбранного типа специалистов".to_string(),
+                cost: 1,
+                have_cost: true,
+                is_negative: false,
+                can_be_negative: true,
+            },
+            AspectClass::TalentedPoliticians => Aspect{
+                class: aspect,
+                name: "Талантливые политики".to_string(),
+                description: "Народы с этой чертой имеют увеличенный на 2 стартовый прирост политических фрагментов, что способствует их ускоренному прогрессу в соответствующих сферах. Вы также получаете небольшие бонусы к способностям выбранного типа специалистов".to_string(),
+                cost: 1,
+                have_cost: true,
+                is_negative: false,
+                can_be_negative: true,
+            },
+            AspectClass::TalentedManagers => Aspect{
+                class: aspect,
+                name: "Талантливые управленцы".to_string(),
+                description: "Народы с этой чертой имеют увеличенный на 2 стартовый прирост экономических фрагментов, что способствует их ускоренному прогрессу в соответствующих сферах. Вы также получаете небольшие бонусы к способностям выбранного типа специалистов".to_string(),
                 cost: 1,
                 have_cost: true,
                 is_negative: false,
@@ -374,7 +395,7 @@ impl Aspect {
             AspectClass::NaturalWeapons => Aspect{
                     class: aspect,
                     name: "Естественное оружие".to_string(),
-                    description: "Ваша раса может эффективно сражаться без использования доспехов и оружия благодаря своим естественным особенностям (наприме".to_string(),
+                    description: "Ваша раса может эффективно сражаться без использования доспехов и оружия благодаря своим естественным особенностям (наприме: боевая форма, шипы, дыхание огнем, выделение яда и т.д.)".to_string(),
                     cost: 0,
                     have_cost: false,
                     is_negative: false,

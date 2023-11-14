@@ -3,6 +3,7 @@ mod pages;
 mod aspects;
 mod structures;
 mod resources;
+mod state;
 
 use leptos::*;
 use leptos_router::*;

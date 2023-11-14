@@ -1,7 +1,8 @@
 use crate::resources::*;
 use strum_macros::EnumIter;
+use serde::{Deserialize, Serialize};
 
-#[derive(EnumIter,Clone)]
+#[derive(EnumIter, Clone, Serialize, Deserialize)]
 pub enum StructureClass {
     Farm,
     Camp,
@@ -13,7 +14,7 @@ pub enum StructureClass {
     MerchantQuarter,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct Structure {
     pub count: u32,
     pub name: String,
@@ -53,7 +54,7 @@ impl Structure {
                 },
                 revenue: Payment {
                     population: Resource::Population(-5),
-                    food: Resource::BuildingMaterials(10),
+                    building_materials: Resource::BuildingMaterials(10),
                     ..Payment::new()
                 }
             },
@@ -69,7 +70,7 @@ impl Structure {
                 },
                 revenue: Payment {
                     population: Resource::Population(-3),
-                    food: Resource::Metal(10),
+                    metal: Resource::Metal(10),
                     ..Payment::new()
                 }
             },

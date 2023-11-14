@@ -1,11 +1,13 @@
-#[derive(Clone)]
+use serde::{Deserialize, Serialize};
+
+#[derive(Clone, Serialize, Deserialize)]
 pub enum  Fragment {
     Military(i32),
     Political(i32),
     Economic(i32)
 }
 
-#[derive(Clone)]
+#[derive(Clone, Serialize, Deserialize)]
 pub enum Resource {
     Population(i32),
     BuildingMaterials(i32),
@@ -14,7 +16,7 @@ pub enum Resource {
     Metal(i32),
 }
 
-#[derive(Clone)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct Payment {
     pub population: Resource,
     pub building_materials: Resource,
@@ -27,6 +29,19 @@ pub struct Payment {
 }
 
 impl Payment {
+    pub const fn default() -> Self {
+        Payment { 
+            population: Resource::Population(36), 
+            building_materials: Resource::BuildingMaterials(45), 
+            money: Resource::Money(1900), 
+            food: Resource::Food(85), 
+            metal: Resource::Metal(10), 
+            military_fragment: Fragment::Military(5), 
+            political_fragment: Fragment::Political(5), 
+            economic_fragment: Fragment::Economic(5) 
+        }
+    }
+
     pub const fn new() -> Self {
         Payment { 
             population: Resource::Population(0), 
