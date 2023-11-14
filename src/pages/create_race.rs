@@ -3,11 +3,14 @@ use std::cmp::Ordering;
 use leptos::*;
 use strum::IntoEnumIterator;
 use crate::components::aspect_selector::AspectSelector;
+use crate::components::structure_selector::StructureSelector;
 use crate::aspects::{AspectClass,Aspect};
+use crate::structures::{StructureClass, Structure};
 
 #[component]
 pub fn CreateRace() -> impl IntoView {
     let (aspects, set_aspects) = create_signal(HashMap::<AspectClass,Aspect>::new());
+    let (structures, set_structures) = create_signal(<HashMap::<i32,Structure>>::new());
 
     let get_cost = move || -> i32 {
         aspects.get().into_values().map(|v| -v.cost).sum::<i32>() + 2
@@ -68,5 +71,9 @@ pub fn CreateRace() -> impl IntoView {
                 </ul>
             </div>
         </div>
+        <h2>"Добавление построек"</h2>
+        <StructureSelector structures=structures set_structures=set_structures/>
+        <h2>"Ресурсы"</h2>
+        <h1>{"Раздел в разработке 🚧"}</h1>
     }
 }

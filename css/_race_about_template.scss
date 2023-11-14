@@ -5,6 +5,12 @@ div.race-about-template-container {
 }
 
 table.race-about-template-inputs {
+	border: none;
+
+	tr, td {
+		border: none;
+	}
+
 	tr {
 		height: 10px;
 	}

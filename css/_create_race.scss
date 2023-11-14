@@ -27,3 +27,23 @@ div.selected-aspects {
 	top: 5px;
 	padding: 10px;
 }
+
+table.structure-selector {
+	input {
+		-moz-appearance:textfield; /* Firefox */
+		width: 50%;
+		border: none;
+		text-align: center;
+	}
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		/* display: none; <- Crashes Chrome on hover */
+		-webkit-appearance: none;
+		margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+	}
+}
+
+div.add-structure {
+	display: flex;
+}

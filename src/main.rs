@@ -1,6 +1,8 @@
 mod components;
 mod pages;
 mod aspects;
+mod structures;
+mod resources;
 
 use leptos::*;
 use leptos_router::*;
