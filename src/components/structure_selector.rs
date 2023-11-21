@@ -16,7 +16,7 @@ pub fn StructureView(
 
     view! {
         <tr>
-            <td>{structure.get_untracked().name}</td>
+            <td>{ structure.get().name}</td>
             <td>
                 <input type="number"
                     value=move || structure.get().count
@@ -28,113 +28,73 @@ pub fn StructureView(
             </td>
             <td>
                 <input type="number"
-                    value=move || { 
-                        let s = structure.get();
-                        if let Resource::Population(n) = s.revenue.population {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || structure.get().revenue.population
                     on:input=move |ev| {
                         let mut structure = structure.get();
-                        structure.revenue.population = Resource::Population(event_target_value(&ev).parse::<i32>().unwrap());
+                        structure.revenue.population = event_target_value(&ev).parse::<i32>().unwrap();
                         set_structure.set(structure);
                     }/>
             </td>
             <td>
                 <input type="number"
-                    value=move || { 
-                        let s = structure.get();
-                        if let Resource::BuildingMaterials(n) = s.revenue.building_materials {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || structure.get().revenue.building_materials
                     on:input=move |ev| {
                         let mut structure = structure.get();
-                        structure.cost.population = Resource::BuildingMaterials(event_target_value(&ev).parse::<i32>().unwrap());
+                        structure.cost.population = event_target_value(&ev).parse::<i32>().unwrap();
                         set_structure.set(structure);
                     }/>
             </td>
             <td>
                 <input type="number"
-                    value=move || { 
-                        let s = structure.get();
-                        if let Resource::Money(n) = s.revenue.money {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || structure.get().revenue.money
                     on:input=move |ev| {
                         let mut structure = structure.get();
-                        structure.cost.money = Resource::Money(event_target_value(&ev).parse::<i32>().unwrap());
+                        structure.cost.money = event_target_value(&ev).parse::<i32>().unwrap();
                         set_structure.set(structure);
                     }/>
             </td>
             <td>
                 <input type="number"
-                    value=move || { 
-                        let s = structure.get();
-                        if let Resource::Food(n) = s.revenue.food {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || structure.get().revenue.food
                     on:input=move |ev| {
                         let mut structure = structure.get();
-                        structure.cost.food = Resource::Food(event_target_value(&ev).parse::<i32>().unwrap());
+                        structure.cost.food = event_target_value(&ev).parse::<i32>().unwrap();
                         set_structure.set(structure);
                     }/>
             </td>
             <td>
                 <input type="number"
-                    value=move || { 
-                        let s = structure.get();
-                        if let Resource::Metal(n) = s.revenue.metal {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || structure.get().revenue.metal
                     on:input=move |ev| {
                         let mut structure = structure.get();
-                        structure.cost.metal = Resource::Metal(event_target_value(&ev).parse::<i32>().unwrap());
+                        structure.cost.metal = event_target_value(&ev).parse::<i32>().unwrap();
                         set_structure.set(structure);
                     }/>
             </td>
             <td>
                 <input type="number"
-                    value=move || { 
-                        let s = structure.get();
-                        if let Fragment::Military(n) = s.revenue.military_fragment {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || structure.get().revenue.military_fragment
                     on:input=move |ev| {
                         let mut structure = structure.get();
-                        structure.cost.military_fragment = Fragment::Military(event_target_value(&ev).parse::<i32>().unwrap());
+                        structure.cost.military_fragment = event_target_value(&ev).parse::<i32>().unwrap();
                         set_structure.set(structure);
                     }/>
             </td>
             <td>
                 <input type="number"
-                    value=move || { 
-                        let s = structure.get();
-                        if let Fragment::Political(n) = s.revenue.political_fragment {
-                            n
-                        } else { 1 }
-                    }
+                    value=move || structure.get().revenue.political_fragment
                     on:input=move |ev| {
                         let mut structure = structure.get();
-                        structure.cost.political_fragment = Fragment::Political(event_target_value(&ev).parse::<i32>().unwrap());
+                        structure.cost.political_fragment = event_target_value(&ev).parse::<i32>().unwrap();
                         set_structure.set(structure);
                     }/>
             </td>
             <td>
                 <input type="number"
-                    value=move || { 
-                        let s = structure.get();
-                        if let Fragment::Economic(n) = s.revenue.economic_fragment {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || structure.get().revenue.economic_fragment
                     on:input=move |ev| {
                         let mut structure = structure.get();
-                        structure.cost.economic_fragment = Fragment::Economic(event_target_value(&ev).parse::<i32>().unwrap());
+                        structure.cost.economic_fragment = event_target_value(&ev).parse::<i32>().unwrap();
                         set_structure.set(structure);
                     }/>
             </td>

@@ -31,14 +31,14 @@ impl Structure {
                 name: "Ферма".to_string(),
                 class: StructureClass::Farm,
                 cost: Payment {
-                    building_materials: Resource::BuildingMaterials(30),
-                    money: Resource::Money(100),
-                    economic_fragment: Fragment::Economic(2),
+                    building_materials: 30,
+                    money: 100,
+                    economic_fragment: 2,
                     ..Payment::new()
                 },
                 revenue: Payment {
-                    population: Resource::Population(-5),
-                    food: Resource::Food(20),
+                    population: -5,
+                    food: 20,
                     ..Payment::new()
                 }
             },
@@ -47,14 +47,14 @@ impl Structure {
                 name: "Лагерь".to_string(),
                 class: StructureClass::Camp,
                 cost: Payment {
-                    building_materials: Resource::BuildingMaterials(15),
-                    money: Resource::Money(200),
-                    economic_fragment: Fragment::Economic(2),
+                    building_materials: 15,
+                    money: 200,
+                    economic_fragment: 2,
                     ..Payment::new()
                 },
                 revenue: Payment {
-                    population: Resource::Population(-5),
-                    building_materials: Resource::BuildingMaterials(10),
+                    population: -5,
+                    building_materials: 10,
                     ..Payment::new()
                 }
             },
@@ -63,14 +63,14 @@ impl Structure {
                 name: "Шахта".to_string(),
                 class: StructureClass::Mine,
                 cost: Payment {
-                    building_materials: Resource::BuildingMaterials(10),
-                    money: Resource::Money(300),
-                    economic_fragment: Fragment::Economic(3),
+                    building_materials: 10,
+                    money: 300,
+                    economic_fragment: 3,
                     ..Payment::new()
                 },
                 revenue: Payment {
-                    population: Resource::Population(-3),
-                    metal: Resource::Metal(10),
+                    population: -3,
+                    metal: 10,
                     ..Payment::new()
                 }
             },
@@ -79,20 +79,20 @@ impl Structure {
                 name: "Поселение".to_string(),
                 class: StructureClass::Settlement,
                 cost: Payment {
-                    building_materials: Resource::BuildingMaterials(45),
-                    money: Resource::Money(650),
-                    metal: Resource::Metal(5),
-                    military_fragment: Fragment::Military(1),
-                    political_fragment: Fragment::Political(2),
-                    economic_fragment: Fragment::Economic(5),
+                    building_materials: 45,
+                    money: 650,
+                    metal: 5,
+                    military_fragment: 1,
+                    political_fragment: 2,
+                    economic_fragment: 5,
                     ..Payment::new()
                 },
                 revenue: Payment {
-                    population: Resource::Population(-10),
-                    money: Resource::Money(50),
-                    military_fragment: Fragment::Military(1),
-                    political_fragment: Fragment::Political(1),
-                    economic_fragment: Fragment::Economic(1),
+                    population: -10,
+                    money: 50,
+                    military_fragment: 1,
+                    political_fragment: 1,
+                    economic_fragment: 1,
                     ..Payment::new()
                 }
             },
@@ -101,17 +101,17 @@ impl Structure {
                 name: "Крепость".to_string(),
                 class: StructureClass::Fortress,
                 cost: Payment {
-                    building_materials: Resource::BuildingMaterials(30),
-                    money: Resource::Money(400),
-                    metal: Resource::Metal(15),
-                    military_fragment: Fragment::Military(2),
-                    economic_fragment: Fragment::Economic(2),
+                    building_materials: 30,
+                    money: 400,
+                    metal: 15,
+                    military_fragment: 2,
+                    economic_fragment: 2,
                     ..Payment::new()
                 },
                 revenue: Payment {
-                    population: Resource::Population(-3),
-                    money: Resource::Money(-50),
-                    military_fragment: Fragment::Military(1),
+                    population: -3,
+                    money: -50,
+                    military_fragment: 1,
                     ..Payment::new()
                 }
             },
@@ -120,15 +120,15 @@ impl Structure {
                 name: "Военный квартал".to_string(),
                 class: StructureClass::MillitaryQuarter,
                 cost: Payment {
-                    building_materials: Resource::BuildingMaterials(15),
-                    money: Resource::Money(400),
-                    metal: Resource::Metal(5),
-                    economic_fragment: Fragment::Economic(2),
+                    building_materials: 15,
+                    money: 400,
+                    metal: 5,
+                    economic_fragment: 2,
                     ..Payment::new()
                 },
                 revenue: Payment {
-                    population: Resource::Population(-3),
-                    military_fragment: Fragment::Military(1),
+                    population: -3,
+                    military_fragment: 1,
                     ..Payment::new()
                 }
             },
@@ -137,15 +137,15 @@ impl Structure {
                 name: "Админ. квартал".to_string(),
                 class: StructureClass::MillitaryQuarter,
                 cost: Payment {
-                    building_materials: Resource::BuildingMaterials(15),
-                    money: Resource::Money(400),
-                    metal: Resource::Metal(5),
-                    economic_fragment: Fragment::Economic(2),
+                    building_materials: 15,
+                    money: 400,
+                    metal: 5,
+                    economic_fragment: 2,
                     ..Payment::new()
                 },
                 revenue: Payment {
-                    population: Resource::Population(-3),
-                    political_fragment: Fragment::Political(1),
+                    population: -3,
+                    political_fragment: 1,
                     ..Payment::new()
                 }
             },
@@ -154,15 +154,15 @@ impl Structure {
                 name: "Торговый квартал".to_string(),
                 class: StructureClass::MillitaryQuarter,
                 cost: Payment {
-                    building_materials: Resource::BuildingMaterials(15),
-                    money: Resource::Money(400),
-                    metal: Resource::Metal(5),
-                    economic_fragment: Fragment::Economic(2),
+                    building_materials: 15,
+                    money: 400,
+                    metal: 5,
+                    economic_fragment: 2,
                     ..Payment::new()
                 },
                 revenue: Payment {
-                    population: Resource::Population(-3),
-                    economic_fragment: Fragment::Economic(1),
+                    population: -3,
+                    economic_fragment: 1,
                     ..Payment::new()
                 }
             }

@@ -4,9 +4,7 @@ use base64::Engine;
 use leptos::*;
 use strum::IntoEnumIterator;
 use base64::engine::general_purpose::STANDARD;
-use wasm_bindgen_futures::JsFuture;
-use wasm_bindgen_futures::js_sys::Promise;
-use web_sys::HtmlInputElement;
+use crate::components::io_state_settings::LoadState;
 use crate::components::aspect_selector::AspectSelector;
 use crate::components::structure_selector::StructureSelector;
 use crate::aspects::{AspectClass,Aspect};
@@ -24,35 +22,21 @@ pub fn CreateRace() -> impl IntoView {
         aspects.get().into_values().map(|v| -v.cost).sum::<i32>() + 2
     };
 
-    let load_file = create_action(move |input: &Promise| {
-        let input = input.to_owned();
-        async move {
-            if let Ok(text) = JsFuture::from(input).await {
-                if let Ok(state) = serde_json::from_str::<State>(&text.as_string().unwrap()) {
-                    set_aspects.set(state.aspects);
-                    set_resources.set(state.resources);
-                    let mut structures = HashMap::<i32,Structure>::new();
-                    for (i,s) in state.structures.iter().enumerate() {
-                        structures.insert(i as i32, s.clone());
-                    }
-                    set_structures.set(structures);
-                }
-            }
-
+    let load_state = move |state: State| {
+        set_aspects.set(state.aspects);
+        set_resources.set(state.resources);
+        let mut structures = HashMap::<i32,Structure>::new();
+        for (i,s) in state.structures.iter().enumerate() {
+            structures.insert(i as i32, s.clone());
         }
-    });
+        set_structures.set(structures);
+    };
 
     view! {
         <h1>"Создание государства"</h1>
         <div class="center-content">
             <p>"Загрузить файл настроек: "</p>
-            <input type="file" accept=".json" on:input=move |ev| {
-                let input = event_target::<HtmlInputElement>(&ev);
-                if let Some(files) = input.files() {
-                    let file = files.get(0).unwrap();
-                    load_file.dispatch(file.text());
-                }
-            }/>
+            <LoadState on_load=load_state/> 
         </div>
         <h2>"Выбор аспектов"</h2>
         <div class="aspect-selection">
@@ -125,106 +109,66 @@ pub fn CreateRace() -> impl IntoView {
             </thead>
             <tr>
                 <td><input type="number"
-                    value=move || { 
-                        let r = resources.get();
-                        if let Resource::Population(n) = r.population {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || resources.get().population
                     on:input=move |ev| {
                         let mut r = resources.get();
-                        r.population = Resource::Population(event_target_value(&ev).parse::<i32>().unwrap());
+                        r.population = event_target_value(&ev).parse::<i32>().unwrap();
                         set_resources.set(r);
                     }
                 /></td>
                 <td><input type="number"
-                    value=move || { 
-                        let r = resources.get();
-                        if let Resource::BuildingMaterials(n) = r.building_materials {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || resources.get().building_materials 
                     on:input=move |ev| {
                         let mut r = resources.get();
-                        r.building_materials = Resource::BuildingMaterials(event_target_value(&ev).parse::<i32>().unwrap());
+                        r.building_materials = event_target_value(&ev).parse::<i32>().unwrap();
                         set_resources.set(r);
                     }
                 /></td>
                 <td><input type="number"
-                    value=move || { 
-                        let r = resources.get();
-                        if let Resource::Money(n) = r.money {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || resources.get().money
                     on:input=move |ev| {
                         let mut r = resources.get();
-                        r.money = Resource::Money(event_target_value(&ev).parse::<i32>().unwrap());
+                        r.money = event_target_value(&ev).parse::<i32>().unwrap();
                         set_resources.set(r);
                     }
                 /></td>
                 <td><input type="number"
-                    value=move || { 
-                        let r = resources.get();
-                        if let Resource::Food(n) = r.food {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || resources.get().food
                     on:input=move |ev| {
                         let mut r = resources.get();
-                        r.food = Resource::Food(event_target_value(&ev).parse::<i32>().unwrap());
+                        r.food = event_target_value(&ev).parse::<i32>().unwrap();
                         set_resources.set(r);
                     }
                 /></td>
                 <td><input type="number"
-                    value=move || { 
-                        let r = resources.get();
-                        if let Resource::Metal(n) = r.metal {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || resources.get().metal
                     on:input=move |ev| {
                         let mut r = resources.get();
-                        r.metal = Resource::Metal(event_target_value(&ev).parse::<i32>().unwrap());
+                        r.metal = event_target_value(&ev).parse::<i32>().unwrap();
                         set_resources.set(r);
                     }
                 /></td>
                 <td><input type="number"
-                    value=move || { 
-                        let r = resources.get();
-                        if let Fragment::Military(n) = r.military_fragment {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || resources.get().military_fragment
                     on:input=move |ev| {
                         let mut r = resources.get();
-                        r.military_fragment = Fragment::Military(event_target_value(&ev).parse::<i32>().unwrap());
+                        r.military_fragment = event_target_value(&ev).parse::<i32>().unwrap();
                         set_resources.set(r);
                     }
                 /></td>
                 <td><input type="number"
-                    value=move || { 
-                        let r = resources.get();
-                        if let Fragment::Political(n) = r.political_fragment {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || resources.get().political_fragment
                     on:input=move |ev| {
                         let mut r = resources.get();
-                        r.political_fragment = Fragment::Political(event_target_value(&ev).parse::<i32>().unwrap());
+                        r.political_fragment = event_target_value(&ev).parse::<i32>().unwrap();
                         set_resources.set(r);
                     }
                 /></td>
                 <td><input type="number"
-                    value=move || { 
-                        let r = resources.get();
-                        if let Fragment::Economic(n) = r.economic_fragment {
-                            n
-                        } else { 0 }
-                    }
+                    value=move || resources.get().economic_fragment
                     on:input=move |ev| {
                         let mut r = resources.get();
-                        r.economic_fragment = Fragment::Economic(event_target_value(&ev).parse::<i32>().unwrap());
+                        r.economic_fragment = event_target_value(&ev).parse::<i32>().unwrap();
                         set_resources.set(r);
                     }
                 /></td>
@@ -239,9 +183,8 @@ pub fn CreateRace() -> impl IntoView {
                 }).unwrap();
                 let mut data_base64 = String::new();
                 STANDARD.encode_string(data_json, &mut data_base64);
-                let file = "data:application/octet-stream;charset=utf-16le;base64,".to_string() + &data_base64;
 
-                file
+                "data:application/octet-stream;charset=utf-16le;base64,".to_string() + &data_base64
             }><button>"Скачать файл с настройками страны"</button></a>
         </div>
     }
