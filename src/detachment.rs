@@ -241,7 +241,7 @@ impl Stats {
         }
     }
 
-    pub fn get_equipment_cost(&self) -> Payment {
+    pub fn get_equipment_cost(self) -> Payment {
         Payment {
             money: (
                     self.health
@@ -262,9 +262,9 @@ impl Stats {
         }
     } 
 
-    pub fn to_string(&self) -> String {
+    pub fn to_string(self) -> String {
         format!(
-            "Здоровье: {}\nСшибка: {}\nРазведка: {}\nМанёвр: {}\nМобильность: {}\nМораль: {}\nЗащида д/б: {}\nЗащида б/б: {}\nУрон д/б: {}\nУрон б/б: {}",
+            "Здоровье: {}\nСшибка: {}\nРазведка: {}\nМанёвр: {}\nМобильность: {}\nМораль: {}\nЗащита д/б: {}\nЗащита б/б: {}\nУрон д/б: {}\nУрон б/б: {}",
             self.health,
             self.collision,
             self.scouting,
@@ -278,7 +278,7 @@ impl Stats {
         )
     }
 
-    pub fn to_string_short(&self) -> String {
+    pub fn to_string_short(self) -> String {
         let mut out = "".to_string();
         if self.health!=0 { out += &format!("Здоровье: {}, ", self.health).to_string(); }
         if self.collision!=0 { out += &format!("Сшибка: {}, ", self.collision).to_string(); }
@@ -290,10 +290,8 @@ impl Stats {
         if self.protection_m!=0 { out += &format!("Защита б/б: {}, ", self.protection_m).to_string(); }
         if self.damage_d!=0 { out += &format!("Урон д/б: {}, ", self.damage_d).to_string(); }
         if self.damage_m!=0 { out += &format!("Урон б/б: {}", self.damage_m).to_string(); }
-        if out.len()!=0 {
-            if &out[out.len()-1..]==" " {
-                out = out[..out.len()-2].to_string();
-            }
+        if !out.is_empty() && &out[out.len()-1..]==" " {
+            out = out[..out.len()-2].to_string();
         }
         out
     }

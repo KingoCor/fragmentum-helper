@@ -39,8 +39,8 @@ pub fn DetachmentClassView(
 
     let change_stats = move |value: &str| {
         let stats = match value {
-            "Лёгкая пехоты" => Stats::get_by_detachment_class(DetachmentClass::LightInfantry),
-            "Тяжёлая пехоты" => Stats::get_by_detachment_class(DetachmentClass::HeavyInfantry),
+            "Лёгкая пехота" => Stats::get_by_detachment_class(DetachmentClass::LightInfantry),
+            "Тяжёлая пехота" => Stats::get_by_detachment_class(DetachmentClass::HeavyInfantry),
             "Лёгкая кавалерия" => Stats::get_by_detachment_class(DetachmentClass::LightCavalry),
             "Тяжёлая кавалерия" => Stats::get_by_detachment_class(DetachmentClass::HeavyCavalry),
             "Лёгкая поддержка" => Stats::get_by_detachment_class(DetachmentClass::LightSupport),
@@ -54,8 +54,8 @@ pub fn DetachmentClassView(
         <tr>
             <td>
                 <select on:change=move |ev| change_stats(&event_target_value(&ev))>
-                    <option value="Лёгкая пехоты">"Лёгкая пехоты"</option>
-                    <option value="Тяжёлая пехоты">"Тяжёлая пехоты"</option>
+                    <option value="Лёгкая пехота">"Лёгкая пехота"</option>
+                    <option value="Тяжёлая пехота">"Тяжёлая пехота"</option>
                     <option value="Лёгкая кавалерия">"Лёгкая кавалерия"</option>
                     <option value="Тяжёлая кавалерия">"Тяжёлая кавалерия"</option>
                     <option value="Лёгкая поддержка">"Лёгкая поддержка"</option>

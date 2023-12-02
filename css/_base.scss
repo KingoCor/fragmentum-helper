@@ -27,6 +27,11 @@ body {
   font-size: 15pt;
 }
 
+textarea {
+	width: 70%;
+	height: 400px;
+}
+
 a {
   text-decoration: none;
   color: $text-color;

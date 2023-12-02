@@ -9,8 +9,8 @@ use crate::detachment::{Stats,DetachmentClass};
 
 #[component]
 pub fn CreateDetachment() -> impl IntoView {
-    let (class_name, set_class_name) = create_signal("Лёгкая пехоты".to_string());
-    let (class_stats, set_class_stats) = create_signal(Stats::get_by_detachment_class(DetachmentClass::LightCavalry));
+    let (class_name, set_class_name) = create_signal("Лёгкая пехота".to_string());
+    let (class_stats, set_class_stats) = create_signal(Stats::get_by_detachment_class(DetachmentClass::LightInfantry));
     let (lvl, set_lvl) = create_signal(0);
     let (aspects, set_aspects) = create_signal(Vec::<Aspect>::new());
     let (bonuses, set_bonuses) = create_signal(HashMap::<usize,(String,Stats)>::new());
@@ -62,7 +62,10 @@ pub fn CreateDetachment() -> impl IntoView {
 
     view! {
         <h1>"Конструктор отрядов"</h1>
-        <LoadState on_load=load_aspects/>
+        <div class="center-content">
+            <p>"Загрузить файл настроек: "</p>
+            <LoadState on_load=load_aspects/>
+        </div>
         <table class="structure-selector">
             <thead>
                 <tr>
@@ -80,7 +83,8 @@ pub fn CreateDetachment() -> impl IntoView {
                 </tr>
             </thead>
             <tbody>
-                <DetachmentClassView stats=class_stats set_stats=set_class_stats set_name=set_class_name/>
+            
+            <DetachmentClassView stats=class_stats set_stats=set_class_stats set_name=set_class_name/>
                 <DetachmentLvlView lvl=lvl set_lvl=set_lvl/>
                 <tr>
                     <td>"Аспекты"</td>
@@ -178,13 +182,13 @@ pub fn CreateDetachment() -> impl IntoView {
                     })
                     .collect::<Vec<_>>()
                     .join("\n");
-                if aspect_stats.len()!=0 { aspect_stats+="\n"; }
+                if !aspect_stats.is_empty() { aspect_stats+="\n"; }
 
                 let mut bonus_stats = bonuses
                     .get()
                     .into_values()
                     .map(|(name,stats)| {
-                        format!("{} ({})", name.to_string(), stats.to_string_short())
+                        format!("{} ({})", name, stats.to_string_short())
                     })
                     .collect::<Vec<_>>()
                     .join("\n");
@@ -214,7 +218,7 @@ pub fn CreateDetachment() -> impl IntoView {
                 cost.military_fragment = match lvl.get() {
                     0 => 1,
                     1 => 2,
-                    3 => 4,
+                    2 => 4,
                     _ => 7
                 };
 

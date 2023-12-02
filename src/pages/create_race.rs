@@ -9,7 +9,7 @@ use crate::components::aspect_selector::AspectSelector;
 use crate::components::structure_selector::StructureSelector;
 use crate::aspects::{AspectClass,Aspect};
 use crate::structures::Structure;
-use crate::resources::{Resource,Fragment,Payment};
+use crate::resources::Payment;
 use crate::state::State;
 
 #[component]

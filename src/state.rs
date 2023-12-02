@@ -8,5 +8,5 @@ use crate::aspects::{Aspect, AspectClass};
 pub struct State {
     pub aspects: HashMap<AspectClass, Aspect>,
     pub resources: Payment,
-    pub structures: Vec::<Structure>
+    pub structures: Vec::<Structure>,
 }

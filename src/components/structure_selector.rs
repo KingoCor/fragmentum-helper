@@ -2,7 +2,6 @@ use leptos::*;
 use strum::IntoEnumIterator;
 use std::collections::HashMap;
 use crate::structures::{StructureClass, Structure};
-use crate::resources::{Resource,Fragment};
 
 #[component]
 pub fn StructureView(
