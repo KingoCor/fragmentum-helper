@@ -264,30 +264,39 @@ impl Stats {
 
     pub fn to_string(self) -> String {
         format!(
-            "Здоровье: {}\nСшибка: {}\nРазведка: {}\nМанёвр: {}\nМобильность: {}\nМораль: {}\nЗащита д/б: {}\nЗащита б/б: {}\nУрон д/б: {}\nУрон б/б: {}",
-            self.health,
-            self.collision,
+            "разведка: {}\n\
+             маневр: {}\n\
+             защита д/б: {}\n\
+             сшибка: {}\n\
+             защита б/б: {}\n\
+             мораль: {}\n\
+             здоровье: {}\n\
+             мобильность: {}\n\
+             урон б/б: {}\n\
+             урон д/б: {}",
             self.scouting,
             self.maneuver,
-            self.mobility,
-            self.moral,
             self.protection_d,
+            self.collision,
             self.protection_m,
+            self.moral,
+            self.health,
+            self.mobility,
             self.damage_d,
-            self.damage_m
+            self.damage_m,
         )
     }
 
     pub fn to_string_short(self) -> String {
         let mut out = "".to_string();
-        if self.health!=0 { out += &format!("Здоровье: {}, ", self.health).to_string(); }
-        if self.collision!=0 { out += &format!("Сшибка: {}, ", self.collision).to_string(); }
         if self.scouting!=0 { out += &format!("Разведка: {}, ", self.scouting).to_string(); }
         if self.maneuver!=0 { out += &format!("Манёвр: {}, ", self.maneuver).to_string(); }
-        if self.mobility!=0 { out += &format!("Мобильность: {}, ", self.mobility).to_string(); }
-        if self.moral!=0 { out += &format!("Мораль: {}, ", self.moral).to_string(); }
         if self.protection_d!=0 { out += &format!("Защита д/б: {}, ", self.protection_d).to_string(); }
+        if self.collision!=0 { out += &format!("Сшибка: {}, ", self.collision).to_string(); }
         if self.protection_m!=0 { out += &format!("Защита б/б: {}, ", self.protection_m).to_string(); }
+        if self.moral!=0 { out += &format!("Мораль: {}, ", self.moral).to_string(); }
+        if self.health!=0 { out += &format!("Здоровье: {}, ", self.health).to_string(); }
+        if self.mobility!=0 { out += &format!("Мобильность: {}, ", self.mobility).to_string(); }
         if self.damage_d!=0 { out += &format!("Урон д/б: {}, ", self.damage_d).to_string(); }
         if self.damage_m!=0 { out += &format!("Урон б/б: {}", self.damage_m).to_string(); }
         if !out.is_empty() && &out[out.len()-1..]==" " {

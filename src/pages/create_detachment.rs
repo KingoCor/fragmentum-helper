@@ -214,6 +214,8 @@ pub fn CreateDetachment() -> impl IntoView {
                     .into_values()
                     .map(|(_,stats)| stats.get_equipment_cost())
                     .sum();
+                
+                cost.money += 100;
 
                 cost.military_fragment = match lvl.get() {
                     0 => 1,
@@ -234,7 +236,12 @@ pub fn CreateDetachment() -> impl IntoView {
                     Стоимость содержания: {}",
                     class_name.get(),
                     class_stats.get().to_string(),
-                    lvl.get(),
+                    match lvl.get() {
+                        0 => "Нет",
+                        1 => "Регуляры",
+                        2 => "Ветераны",
+                        _ => "Элита"
+                    },
                     aspect_stats,
                     bonus_stats,
                     equipment_text,
