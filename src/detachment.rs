@@ -272,8 +272,8 @@ impl Stats {
              мораль: {}\n\
              здоровье: {}\n\
              мобильность: {}\n\
-             урон б/б: {}\n\
-             урон д/б: {}",
+             урон д/б: {}\n\
+             урон б/б: {}",
             self.scouting,
             self.maneuver,
             self.protection_d,

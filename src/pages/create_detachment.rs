@@ -224,7 +224,8 @@ pub fn CreateDetachment() -> impl IntoView {
                     _ => 7
                 };
 
-                let have_cost = ((cost.money+cost.metal*10+cost.food*5)*(lvl.get()+1)*5)/100;
+                let have_cost = ((cost.money+cost.metal*10+cost.food*5)*(lvl.get()+2)*5)/100;
+                let value = cost.military_fragment+cost.metal*10+cost.food*5+cost.money;
 
                 format!(
                     "Тип: {}\n{}\n\n\
@@ -233,7 +234,8 @@ pub fn CreateDetachment() -> impl IntoView {
                     Экипировка:\n{}\n\n\
                     Итоговые характеристики:\n{}\n\n\
                     Стоимость найма:\nЗолото: {}\nМетал: {}\nЕда: {}\nВФ: {}\n\n\
-                    Стоимость содержания: {}",
+                    Стоимость содержания: {}\n\
+                    Ценность: {}",
                     class_name.get(),
                     class_stats.get().to_string(),
                     match lvl.get() {
@@ -250,7 +252,8 @@ pub fn CreateDetachment() -> impl IntoView {
                     cost.metal,
                     cost.food,
                     cost.military_fragment,
-                    have_cost 
+                    have_cost,
+                    value
                 )
             }/> 
         </div>
